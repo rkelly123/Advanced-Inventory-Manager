@@ -25,7 +25,11 @@ const Home = () => {
             <ItemForm />
             <div className="item-card-list">
                 {inventoryItems.map((item) => (
-                    <ItemCard key={item.id} item={item} />
+                    <ItemCard
+                    key={item.id}
+                    item={item}
+                    onMoreInfo={handleMoreInfo}
+                  />
                 ))}
             </div>
             {selectedItemId && (

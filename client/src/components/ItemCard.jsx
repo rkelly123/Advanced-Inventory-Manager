@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { deleteItem } from '../store';
 import './itemCard.css';
 
-const ItemCard = ({ item, onDelete, onMoreInfo }) => {
+const ItemCard = ({ item, onMoreInfo }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const handleOpenPopup = () => {

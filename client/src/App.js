@@ -7,18 +7,16 @@ import store from "./store"
 
 function App() {
   return (
-    <body>
-      <div className="App">
-        <Provider store={store}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </Provider>
-      </div>
-    </body>
+    <div className="App">
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </div>
   );
 }
 

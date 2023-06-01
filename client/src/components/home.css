@@ -9,12 +9,6 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    border: 12px solid #003366;
-}
-
 .page-container {
     padding: 50px;
 }

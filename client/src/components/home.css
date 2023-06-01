@@ -1,0 +1,27 @@
+.app-title {
+    color: #003366;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 12px solid #003366;
+}
+
+.page-container {
+    padding: 50px;
+}
+
+.item-card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 40px;
+}

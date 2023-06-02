@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateItem, deleteItem, addItem } from '../store';
+import { updateItem, deleteItem } from '../store';
 import ItemForm from './ItemForm';
 import ItemCard from './ItemCard';
 import ItemPopup from './ItemPopup';

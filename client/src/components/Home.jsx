@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateItem } from '../store';
 import ItemForm from './ItemForm';
@@ -26,10 +26,10 @@ const Home = () => {
             <div className="item-card-list">
                 {inventoryItems.map((item) => (
                     <ItemCard
-                    key={item.id}
-                    item={item}
-                    onMoreInfo={handleMoreInfo}
-                  />
+                        key={item.id}
+                        item={item}
+                        onMoreInfo={handleMoreInfo}
+                    />
                 ))}
             </div>
             {selectedItemId && (
@@ -43,4 +43,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default memo(Home);

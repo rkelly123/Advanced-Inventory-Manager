@@ -1,31 +1,27 @@
-// store.js
-
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const itemSlice = createSlice({
-    name: 'item',
+    name: 'items',
     initialState: [],
     reducers: {
         addItem: (state, action) => {
             state.push(action.payload);
         },
         deleteItem: (state, action) => {
-            const index = state.findIndex((item) => item.id === action.payload);
-            if (index !== -1) {
-                state.splice(index, 1);
-            }
+            const itemId = action.payload;
+            return state.filter((item) => item.id !== itemId);
         },
         updateItem: (state, action) => {
-            const { id, newName, newDescription, newPrice } = action.payload;
-            const item = state.find((item) => item.id === id);
-            if (item) {
-                item.name = newName;
-                item.description = newDescription;
-                item.price = newPrice;
+            const updatedItem = action.payload;
+            const itemIndex = state.findIndex((item) => item.id === updatedItem.id);
+            if (itemIndex !== -1) {
+                state[itemIndex] = updatedItem;
             }
         },
     },
 });
+
+export const { addItem, deleteItem, updateItem } = itemSlice.actions;
 
 const store = configureStore({
     reducer: {
@@ -33,5 +29,4 @@ const store = configureStore({
     },
 });
 
-export const { addItem, deleteItem, updateItem } = itemSlice.actions;
 export default store;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../store';
-import './itemForm.css';
+import './styles/itemForm.css';
 
 const ItemForm = () => {
     const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { updateItem, deleteItem } from '../store';
 import ItemForm from './ItemForm';
 import ItemCard from './ItemCard';
 import ItemPopup from './ItemPopup';
-import './home.css';
+import './styles/home.css';
 
 const Home = () => {
     const dispatch = useDispatch();

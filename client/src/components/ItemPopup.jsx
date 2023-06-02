@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateItem } from '../store';
-import './itemPopup.css';
+import './styles/itemPopup.css';
 
 const ItemPopup = ({ item, onClose }) => {
     const dispatch = useDispatch();
@@ -65,11 +65,11 @@ const ItemPopup = ({ item, onClose }) => {
 
             <div className="item-actions">
                 {editing ? (
-                    <button onClick={handleSave} class="save-button">Save</button>
+                    <button onClick={handleSave} className="save-button">Save</button>
                 ) : (
-                    <button onClick={() => setEditing(true)} class="edit-button">Edit</button>
+                    <button onClick={() => setEditing(true)} className="edit-button">Edit</button>
                 )}
-                <button onClick={onClose} class="close-button">Close</button>
+                <button onClick={onClose} className="close-button">Close</button>
             </div>
         </div>
     );

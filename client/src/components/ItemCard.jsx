@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteItem } from '../store';
-import './itemCard.css';
+import './styles/itemCard.css';
 
 const ItemCard = ({ item, onMoreInfo, onDelete }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);

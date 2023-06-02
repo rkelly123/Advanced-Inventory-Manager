@@ -1,6 +1,6 @@
-import React, { useState, memo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateItem } from '../store';
+import { updateItem, deleteItem, addItem } from '../store';
 import ItemForm from './ItemForm';
 import ItemCard from './ItemCard';
 import ItemPopup from './ItemPopup';
@@ -19,6 +19,11 @@ const Home = () => {
         dispatch(updateItem(updatedItem));
     };
 
+    const handleDelete = (itemId) => {
+        dispatch(deleteItem(itemId));
+        setSelectedItemId(null);
+    };
+
     return (
         <div>
             <h1 className="app-title">Inventory Management System</h1>
@@ -29,6 +34,7 @@ const Home = () => {
                         key={item.id}
                         item={item}
                         onMoreInfo={handleMoreInfo}
+                        onDelete={handleDelete} // Pass the delete handler to the ItemCard component
                     />
                 ))}
             </div>
@@ -43,4 +49,4 @@ const Home = () => {
     );
 };
 
-export default memo(Home);
+export default Home;

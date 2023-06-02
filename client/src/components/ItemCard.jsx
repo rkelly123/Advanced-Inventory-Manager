@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { deleteItem } from '../store';
 import './itemCard.css';
 
-const ItemCard = ({ item, onMoreInfo }) => {
+const ItemCard = ({ item, onMoreInfo, onDelete }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const handleOpenPopup = () => {
@@ -14,6 +14,7 @@ const ItemCard = ({ item, onMoreInfo }) => {
     const dispatch = useDispatch();
 
     const handleDelete = () => {
+        onDelete(item.id)
         dispatch(deleteItem(item.id));
     };
 

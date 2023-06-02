@@ -21,9 +21,9 @@ const ItemCard = ({ item, onMoreInfo }) => {
 
     return (
         <div className="item-card">
+            <h3 className="item-name">{item.name}</h3>
             <img src={item.image} alt={item.name} className="item-image" />
             <div className="item-info">
-                <h3 className="item-name">{item.name}</h3>
                 <button onClick={handleOpenPopup} className="more-info-button">More Info</button>
                 <button onClick={handleDelete} className="delete-button">Delete</button>
             </div>

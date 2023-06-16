@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateItem } from '../store';
+// import { updateItem } from '../redux/store';
 import './styles/itemPopup.css';
 
 const ItemPopup = ({ item, onClose }) => {
@@ -13,7 +13,7 @@ const ItemPopup = ({ item, onClose }) => {
     };
 
     const handleSave = () => {
-        dispatch(updateItem(editedItem));
+        // dispatch(updateItem(editedItem));
         setEditing(false);
     };
 

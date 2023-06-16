@@ -42,6 +42,15 @@ router.post('/', function (req, res, next) {
   return res.send(req.body);
 })
 
+router.put('/', function (req, res, next) {
+  const itemIndex = items.findIndex((item) => item.id === req.body.id);
+  if (itemIndex !== -1) {
+    items[itemIndex] = req.body;
+  }
+
+  return res.send(items);
+})
+
 router.delete('/:itemId', function (req, res, next) {
   items = items.filter((item) => item.id !== req.params.itemId);
 

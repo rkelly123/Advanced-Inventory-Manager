@@ -42,8 +42,28 @@ const deleteItem = async (itemId) => {
     return itemId;
 };
 
+const updateItem = async (item) => {
+    const response = await fetch('http://localhost:3002/items', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(item),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        const errorMsg = data?.message;
+        throw new Error(errorMsg);
+    }
+
+    return item;
+};
+
 export default {
     addItem,
     getItems,
     deleteItem,
+    updateItem,
 };

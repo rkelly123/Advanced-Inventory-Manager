@@ -24,3 +24,11 @@ export const deleteItemAsync = createAsyncThunk(
         return response;
     }
 );
+
+export const updateItemAsync = createAsyncThunk(
+    actionTypes.UPDATE_ITEM,
+    async (item) => {
+        const response = await ItemService.updateItem(item);
+        return response;
+    }
+);

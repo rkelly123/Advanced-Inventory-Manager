@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getItemsAsync } from '../redux/items/thunks';
+import { getItemsAsync, deleteItemAsync } from '../redux/items/thunks';
 // import { updateItem, deleteItem } from '../redux/store';
 import ItemForm from './ItemForm';
 import ItemCard from './ItemCard';
@@ -24,10 +24,10 @@ const Home = () => {
     //     dispatch(updateItem(updatedItem));
     // };
 
-    // const handleDelete = (itemId) => {
-    //     dispatch(deleteItem(itemId));
-    //     setSelectedItemId(null);
-    // };
+    const handleDelete = (itemId) => {
+        dispatch(deleteItemAsync(itemId));
+        setSelectedItemId(null);
+    };
 
     return (
         <div>
@@ -39,7 +39,7 @@ const Home = () => {
                         key={item.id}
                         item={item}
                         onMoreInfo={handleMoreInfo}
-                    // onDelete={handleDelete} // Pass the delete handler to the ItemCard component
+                        onDelete={handleDelete}
                     />
                 ))}
             </div>

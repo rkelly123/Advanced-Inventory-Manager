@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const items = [
+let items = [
   {
     id: '1',
     name: 'Australian Cattle Dog',
@@ -43,7 +43,7 @@ router.post('/', function (req, res, next) {
 })
 
 router.delete('/:itemId', function (req, res, next) {
-  items.filter((item) => item.id !== req.params.itemID);
+  items = items.filter((item) => item.id !== req.params.itemId);
 
   return res.send(items);
 })

@@ -25,7 +25,7 @@ const getItems = async () => {
 };
 
 const deleteItem = async (itemId) => {
-    const response = await fetch('http://localhost:3002/:itemId', {
+    const response = await fetch(`http://localhost:3002/items/${itemId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

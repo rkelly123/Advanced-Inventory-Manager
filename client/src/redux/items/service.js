@@ -24,7 +24,26 @@ const getItems = async () => {
     return response.json();
 };
 
+const deleteItem = async (itemId) => {
+    const response = await fetch('http://localhost:3002/:itemId', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        const errorMsg = data?.message;
+        throw new Error(errorMsg);
+    }
+
+    return itemId;
+};
+
 export default {
     addItem,
-    getItems
+    getItems,
+    deleteItem,
 };

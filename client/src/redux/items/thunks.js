@@ -16,3 +16,11 @@ export const addItemAsync = createAsyncThunk(
         return response;
     }
 );
+
+export const deleteItemAsync = createAsyncThunk(
+    actionTypes.DELETE_ITEM,
+    async (itemId) => {
+        const response = await ItemService.deleteItem(itemId);
+        return response;
+    }
+);

@@ -2,15 +2,16 @@ const addItem = async (item) => {
     const response = await fetch('http://localhost:3002/items', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify(item)
+        body: JSON.stringify(item),
     });
 
     const data = await response.json();
+
     if (!response.ok) {
         const errorMsg = data?.message;
-        throw new Error(errorMsg)
+        throw new Error(errorMsg);
     }
 
     return data;

@@ -12,6 +12,7 @@ export const getItemsAsync = createAsyncThunk(
 export const addItemAsync = createAsyncThunk(
     actionTypes.ADD_ITEM,
     async (item) => {
-        return await ItemService.addItem({ item });
+        const response = await ItemService.addItem(item);
+        return response;
     }
 );

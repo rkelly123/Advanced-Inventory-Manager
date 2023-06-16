@@ -33,7 +33,15 @@ const itemsSlice = createSlice({
             })
             .addCase(addItemAsync.fulfilled, (state, action) => {
                 state.addItem = REQUEST_STATE.FULFILLED;
-                state.list.push(action.payload);
+                console.log(JSON.stringify(action.ppayload))
+                const newItem = {
+                    id: action.payload.id,
+                    name: action.payload.name,
+                    description: action.payload.description,
+                    price: action.payload.price,
+                    image: action.payload.image,
+                };
+                state.list.push(newItem);
             })
             .addCase(addItemAsync.rejected, (state, action) => {
                 state.addItem = REQUEST_STATE.REJECTED;

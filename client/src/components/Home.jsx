@@ -14,7 +14,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getItemsAsync());
-      }, []);
+    }, []); 
 
     const handleMoreInfo = (itemId) => {
         setSelectedItemId(itemId);
@@ -39,7 +39,7 @@ const Home = () => {
                         key={item.id}
                         item={item}
                         onMoreInfo={handleMoreInfo}
-                        // onDelete={handleDelete} // Pass the delete handler to the ItemCard component
+                    // onDelete={handleDelete} // Pass the delete handler to the ItemCard component
                     />
                 ))}
             </div>
@@ -47,7 +47,7 @@ const Home = () => {
                 <ItemPopup
                     item={inventoryItems.find((item) => item.id === selectedItemId)}
                     onClose={() => setSelectedItemId(null)}
-                    // onUpdate={handleUpdate}
+                // onUpdate={handleUpdate}
                 />
             )}
         </div>

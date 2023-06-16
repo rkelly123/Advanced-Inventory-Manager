@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../store';
+import { addItemAsync } from '../redux/items/thunks';
 import './styles/itemForm.css';
 
 const ItemForm = () => {
@@ -21,7 +21,7 @@ const ItemForm = () => {
             image: itemImage,
         };
 
-        dispatch(addItem(newItem));
+        dispatch(addItemAsync(newItem));
 
         // Clear the form inputs
         setItemName('');

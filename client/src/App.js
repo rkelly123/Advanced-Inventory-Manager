@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
-import store from './store';
+import { store } from './redux/store';
 
 const App = () => {
   return (

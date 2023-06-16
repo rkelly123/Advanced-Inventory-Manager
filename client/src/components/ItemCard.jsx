@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteItem } from '../store';
+import { deleteItemAsync } from '../redux/items/thunks';
 import './styles/itemCard.css';
 
 const ItemCard = ({ item, onMoreInfo, onDelete }) => {
@@ -15,7 +15,7 @@ const ItemCard = ({ item, onMoreInfo, onDelete }) => {
 
     const handleDelete = () => {
         onDelete(item.id)
-        dispatch(deleteItem(item.id));
+        dispatch(deleteItemAsync(item.id));
     };
 
 

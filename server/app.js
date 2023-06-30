@@ -1,4 +1,5 @@
 var express = require('express');
+const connectDB = require('./mongo/db');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -8,6 +9,8 @@ var indexRouter = require('./routes/index');
 var itemsRouter = require('./routes/items');
 
 var app = express();
+
+connectDB();
 
 app.use(cors());
 app.use(logger('dev'));

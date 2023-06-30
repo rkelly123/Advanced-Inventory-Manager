@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const queries = require('../mongo/queries');
 
-let items = [
+let oldItems = [
   {
     id: '1',
     name: 'Australian Cattle Dog',
@@ -32,29 +33,27 @@ let items = [
   },
 ];
 
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) {
+  const items = await queries.getAllItems({})
   return res.send(items);
 });
 
-router.post('/', function (req, res, next) {
-  items.push(req.body);
+router.post('/', async function (req, res, next) {
+  await queries.addItem(req.body);
 
   return res.send(req.body);
 })
 
-router.put('/', function (req, res, next) {
-  const itemIndex = items.findIndex((item) => item.id === req.body.id);
-  if (itemIndex !== -1) {
-    items[itemIndex] = req.body;
-  }
+router.put('/', async function (req, res, next) {
+  await queries.updateItem(req.body);
 
-  return res.send(items);
+  return res.send(req.body);
 })
 
-router.delete('/:itemId', function (req, res, next) {
-  items = items.filter((item) => item.id !== req.params.itemId);
+router.delete('/:itemId', async function (req, res, next) {
+  await queries.deleteItem(req.params.itemId)
 
-  return res.send(items);
+  return res.send(req.params.itemId);
 })
 
 module.exports = router;

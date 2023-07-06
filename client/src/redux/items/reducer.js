@@ -18,55 +18,90 @@ const itemsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getItemsAsync.pending, (state) => {
-                state.getItems = REQUEST_STATE.PENDING;
-                state.error = null;
+                return {
+                    ...state,
+                    getItems: REQUEST_STATE.PENDING,
+                    error: null
+                }
             })
             .addCase(getItemsAsync.fulfilled, (state, action) => {
-                state.getItems = REQUEST_STATE.FULFILLED;
-                state.list = action.payload;
+                return {
+                    ...state,
+                    getItems: REQUEST_STATE.FULFILLED,
+                    list: action.payload
+                }
             })
             .addCase(getItemsAsync.rejected, (state, action) => {
-                state.getItems = REQUEST_STATE.REJECTED;
-                state.error = action.error;
+                return {
+                    ...state,
+                    getItems: REQUEST_STATE.REJECTED,
+                    error: action.error
+                }
             })
             .addCase(addItemAsync.pending, (state) => {
-                state.addItem = REQUEST_STATE.PENDING;
-                state.error = null;
+                return {
+                    ...state,
+                    addItem: REQUEST_STATE.PENDING,
+                    error: null
+                }
             })
             .addCase(addItemAsync.fulfilled, (state, action) => {
-                state.addItem = REQUEST_STATE.FULFILLED;
-                state.list.push(action.payload);
+                return {
+                    ...state,
+                    addItem: REQUEST_STATE.FULFILLED,
+                    list: [...state.list, action.payload]
+                }
             })
             .addCase(addItemAsync.rejected, (state, action) => {
-                state.addItem = REQUEST_STATE.REJECTED;
-                state.error = action.error;
+                return {
+                    ...state,
+                    getItems: REQUEST_STATE.REJECTED,
+                    error: action.error
+                }
             })
             .addCase(deleteItemAsync.pending, (state) => {
-                state.deleteItem = REQUEST_STATE.PENDING;
-                state.error = null;
+                return {
+                    ...state,
+                    deleteItem: REQUEST_STATE.PENDING,
+                    error: null
+                }
             })
             .addCase(deleteItemAsync.fulfilled, (state, action) => {
-                state.deleteItem = REQUEST_STATE.FULFILLED;
-                state.list = state.list.filter((item) => item.id !== action.payload);
+                return {
+                    ...state,
+                    deleteItem: REQUEST_STATE.FULFILLED,
+                    list: state.list.filter((item) => item.id !== action.payload)
+                }
             })
             .addCase(deleteItemAsync.rejected, (state, action) => {
-                state.deleteItem = REQUEST_STATE.REJECTED;
-                state.error = action.error;
+                return {
+                    ...state,
+                    deleteItem: REQUEST_STATE.REJECTED,
+                    error: action.error
+                }
             })
             .addCase(updateItemAsync.pending, (state) => {
-                state.updateItem = REQUEST_STATE.PENDING;
-                state.error = null;
+                return {
+                    ...state,
+                    updateItem: REQUEST_STATE.PENDING,
+                    error: null
+                }
             })
             .addCase(updateItemAsync.fulfilled, (state, action) => {
-                state.updateItem = REQUEST_STATE.FULFILLED;
-                const itemIndex = state.list.findIndex((item) => item.id === action.payload.id);
-                if (itemIndex !== -1) {
-                    state.list[itemIndex] = action.payload;
+                return {
+                    ...state,
+                    updateItem: REQUEST_STATE.FULFILLED,
+                    list: state.list.map((item) =>
+                        item.id === action.payload.id ? action.payload : item
+                    )
                 }
             })
             .addCase(updateItemAsync.rejected, (state, action) => {
-                state.updateItem = REQUEST_STATE.REJECTED;
-                state.error = action.error;
+                return {
+                    ...state,
+                    updateItem: REQUEST_STATE.REJECTED,
+                    error: action.error
+                }
             });;
     }
 });

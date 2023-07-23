@@ -1,5 +1,5 @@
 const addItem = async (item) => {
-    const response = await fetch('http://localhost:3002/items', {
+    const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/items`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -18,14 +18,14 @@ const addItem = async (item) => {
 };
 
 const getItems = async () => {
-    const response = await fetch('http://localhost:3002/items', {
+    const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/items`, {
         method: 'GET'
     });
     return response.json();
 };
 
 const deleteItem = async (itemId) => {
-    const response = await fetch(`http://localhost:3002/items/${itemId}`, {
+    const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/items/${itemId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const deleteItem = async (itemId) => {
 };
 
 const updateItem = async (item) => {
-    const response = await fetch('http://localhost:3002/items', {
+    const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/items`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

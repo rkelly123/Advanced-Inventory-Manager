@@ -1,7 +1,40 @@
 {
+  "name": "advanced-inventory-manager",
+  "version": "1.0.0",
+  "description": "An attempt at a more advanced inventory manager. The goal is to familiarize myself with new technologies for each section of the application.",
+  "main": "index.js",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
+    "csstype": "^3.1.2",
+    "js-tokens": "^4.0.0",
+    "hoist-non-react-statics": "^3.3.2",
+    "immer": "^9.0.21",
+    "react-is": "^18.2.0",
+    "react": "^18.2.0",
+    "loose-envify": "^1.4.0",
     "react-redux": "^8.0.7",
-    "redux": "^4.2.1"
-  }
+    "redux-thunk": "^2.4.2",
+    "redux": "^4.2.1",
+    "regenerator-runtime": "^0.13.11",
+    "reselect": "^4.1.8",
+    "use-sync-external-store": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "install-server": "cd server && npm install",
+    "start-server": "cd server && npm start",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkelly123/Advanced-Inventory-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rkelly123/Advanced-Inventory-Manager/issues"
+  },
+  "homepage": "https://github.com/rkelly123/Advanced-Inventory-Manager#readme"
 }

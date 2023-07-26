@@ -1,6 +1,7 @@
 const queries = require('../../mongo/queries');
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
+const waitForExpect = require('wait-for-expect');
 
 const InventoryItem = require('../../mongo/model');
 let mongoServer;
@@ -38,29 +39,27 @@ describe('InventoryItem queries', () => {
         expect(savedItem.name).toBe(testItem.name);
     });
 
-    it('should update an item', (done) => {
-        InventoryItem.create(testItem)
-            .then(() => {
-                const updatedItemData = {
-                    ...testItem,
-                    name: 'Updated Item',
-                    price: 20.0,
-                };
+    it('should update an item', async () => {
+        try {
+            await InventoryItem.create(testItem);
 
-                return queries.updateItem(updatedItemData);
-            })
-            .then(() => {
-                return InventoryItem.findOne({ id: testItem.id });
-            })
-            .then((updatedItem) => {
+            const updatedItemData = {
+                ...testItem,
+                name: 'Updated Item',
+                price: 20.0,
+            };
+
+            await queries.updateItem(updatedItemData);
+
+            await waitForExpect(async () => {
+                const updatedItem = await InventoryItem.findOne({ id: testItem.id });
                 expect(updatedItem).toBeTruthy();
                 expect(updatedItem.name).toBe('Updated Item');
                 expect(updatedItem.price).toBe(20.0);
-                done();
-            })
-            .catch((error) => {
-                done(error);
             });
+        } catch (error) {
+            throw error;
+        }
     });
 
 
